@@ -12,7 +12,18 @@ const nodeResolvePlugin = nodeResolve(defaultNodeResolveConfig);
 
 const commonPlugins = [
   babel({
-    presets: ['@babel/preset-react', '@babel/preset-flow'],
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            browsers: 'ie 10',
+          },
+        },
+      ],
+      '@babel/preset-react',
+      '@babel/preset-flow',
+    ],
     plugins: [
       'babel-preset-fbjs/plugins/dev-expression',
       '@babel/plugin-proposal-class-properties',
